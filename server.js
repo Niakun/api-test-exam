@@ -12,11 +12,11 @@ const users = {
   2: { name: "Bob", age: 30 },
 };
 
-app.get("/user/:id", (req, res) => {
-  const id = req.params.id;
-  const user = users[id];
-  res.json({ name: user.name, age: user.years });
-});
+app.get("/user/:id", function (req, res) {
+    const id = req.params.id;
+    const user = users[id];
+    res.json({ name: user.name, age: user.age });
+  });
 
 app.post("/user", (req, res) => {
   const { userId, fullName, age } = req.body;
@@ -31,6 +31,6 @@ app.patch("/user/:id", (req, res) => {
   res.json({ message: "User updated", user: users[id] });
 });
 
-app.listen(PORT, () => {
+app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
